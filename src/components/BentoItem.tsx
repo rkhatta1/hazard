@@ -13,6 +13,7 @@ interface BentoItemProps {
   index: number;
   theme: Theme;
   onInitialAnimationComplete?: () => void;
+  layoutIdPrefix?: string;
 }
 
 const variants: Variants = {
@@ -55,7 +56,8 @@ const BentoItem: React.FC<BentoItemProps> = ({
   onClose,
   index,
   theme,
-  onInitialAnimationComplete
+  onInitialAnimationComplete,
+  layoutIdPrefix = 'card'
 }) => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const isLight = theme === 'light';
@@ -70,7 +72,7 @@ const BentoItem: React.FC<BentoItemProps> = ({
 
   return (
     <motion.div
-      layoutId={`card-${item.id}`}
+      layoutId={`${layoutIdPrefix}-${item.id}`}
       custom={index}
       initial="hidden"
       animate={isGrayedOut ? "grayedOut" : (hasLoaded ? "visibleNoDelay" : "visible")}

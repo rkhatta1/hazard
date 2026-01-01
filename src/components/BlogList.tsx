@@ -52,7 +52,7 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
   return (
     <>
       <div className="w-full">
-        <div className="grid gap-6">
+        <div className="grid gap-6 pt-12 md:pt-0">
           {posts.map((post) => (
             <div 
               key={post.id} 
@@ -67,8 +67,8 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
                       <span className={`${isLight ? 'bg-slate-300/50' : 'bg-neutral-700/50'} px-2 py-1 rounded`}>{post.date}</span>
                       <span>{post.readTime}</span>
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors ${textColor}`}>{post.title}</h3>
-                  <p className={`${subText} line-clamp-2`}>{post.excerpt}</p>
+                  <h3 className={`text-lg md:text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors ${textColor}`}>{post.title}</h3>
+                  <p className={`text-sm md:text-base ${subText} line-clamp-2`}>{post.excerpt}</p>
               </div>
             </div>
           ))}
@@ -131,13 +131,13 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
                         </div>
 
                         {/* Title Section (Serif) */}
-                        <div className={`mb-12 border-b pb-8 ${isLight ? 'border-slate-200' : 'border-neutral-800'}`}>
-                             <h1 className={`text-4xl md:text-6xl font-serif font-bold leading-tight mb-4 ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                        <div className={`mb-10 md:mb-12 border-b pb-6 md:pb-8 ${isLight ? 'border-slate-200' : 'border-neutral-800'}`}>
+                             <h1 className={`text-3xl md:text-6xl font-serif font-bold leading-tight mb-4 ${isLight ? 'text-slate-900' : 'text-white'}`}>
                                 {activePost.title}
                              </h1>
                         </div>
                         
-                        <div className={`prose prose-lg max-w-none rounded-xl pb-12 min-h-[200px] ${isLight ? 'prose-slate' : 'prose-invert'}
+                        <div className={`prose prose-base md:prose-lg max-w-none rounded-xl pb-12 min-h-[200px] ${isLight ? 'prose-slate' : 'prose-invert'}
                            prose-headings:font-serif
                            prose-a:text-blue-400
                            prose-code:text-pink-400

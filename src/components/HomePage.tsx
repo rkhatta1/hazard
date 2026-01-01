@@ -224,7 +224,7 @@ const RecentCommits = ({
       {commits.slice(0, 3).map((commit, idx) => (
         <a
           key={`${commit.repo}-${commit.sha}`}
-          href={commit.url}
+          href="https://github.com/rkhatta1"
           target="_blank"
           rel="noreferrer"
           className={`grid grid-cols-12 items-center justify-start space-x-3 rounded-xl border p-4 transition-colors ${cardBg}`}
@@ -290,7 +290,7 @@ const getItems = (
              <img 
               src="/pfp.webp"
               alt="Profile" 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+              className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-500" 
              />
              {/* Gradient Overlay to ensure text readability */}
              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
@@ -306,20 +306,20 @@ const getItems = (
         </>
       ),
       expandedContent: (
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <header>
-            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${textColor}`}>About Me</h2>
-            <p className={`text-xl md:text-2xl ${isLight ? 'text-slate-600' : 'text-neutral-300'} leading-relaxed max-w-3xl`}>
+            <h2 className={`text-3xl md:text-5xl font-bold mb-6 ${textColor}`}>About Me</h2>
+            <p className={`text-lg md:text-2xl ${isLight ? 'text-slate-600' : 'text-neutral-300'} leading-relaxed max-w-3xl`}>
               I like making things move on screens.
             </p>
           </header>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12 md:mt-12">
               <div>
-                  <h3 className={`text-xl font-semibold mb-4 ${textColor} flex items-center gap-2`}>
+                  <h3 className={`text-xl font-semibold mb-2 md:mb-4 ${textColor} flex items-center gap-2`}>
                       <User size={20} /> Background
                   </h3>
-                  <p className={`${subTextColor} leading-7`}>
+                  <p className={`${subTextColor} text-sm md:text-md leading-7`}>
                       Recently graduated from ASU with my Masters in Software Engineering, I've been programming for the better part of the past decade and I primarily build end-to-end AI systems on the web.
                       <br />
                       Apart from blasting my eyes with absurd amounts of screen-time, I'm an avid tennis and football fan. Up the Chels!
@@ -328,7 +328,7 @@ const getItems = (
                   </p>
               </div>
               <div>
-                   <h3 className={`text-xl font-semibold mb-4 ${textColor} flex items-center gap-2`}>
+                   <h3 className={`text-xl font-semibold mb-2 md:mb-4 ${textColor} flex items-center gap-2`}>
                       <Code size={20} /> Stack
                   </h3>
                    <div className="flex flex-wrap gap-2">
@@ -362,8 +362,8 @@ const getItems = (
       ),
       expandedContent: (
         <div className="max-w-2xl">
-           <h2 className={`text-4xl font-bold mb-12 ${textColor}`}>Work History</h2>
-           <div className={`relative border-l ${isLight ? 'border-slate-300' : 'border-neutral-800'} ml-3 space-y-12`}>
+           <h2 className={`text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${textColor}`}>Work History</h2>
+           <div className={`relative border-l ${isLight ? 'border-slate-300' : 'border-neutral-800'} ml-3 space-y-8 md:space-y-12`}>
               {[
                   { role: 'Multimedia Services Assistant (Part-Time)', company: 'Fulton School of Engineering', period: 'Aug. 2024 - Dec. 2025', desc: 'Aided the faculties in recording their content for the online students.' },
                   { role: 'Software Development Engineer, Full-Stack', company: 'Trade Journal Project', period: 'Feb. 2023 - Dec. 2023', desc: 'Built core trade logging features for a fin-tech startup. Tech stack: Python/Flask, React.js, GCP, Google Analytics, Pytest and Selenium.' },
@@ -371,9 +371,9 @@ const getItems = (
               ].map((job, idx) => (
                   <div key={idx} className="relative pl-8">
                       <div className={`absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full ${isLight ? 'bg-sky-600 ring-sky-100' : 'bg-white ring-neutral-900'} ring-4`} />
-                      <h3 className={`text-2xl font-bold ${textColor}`}>{job.role}</h3>
-                      <div className={`${subTextColor} mb-2 font-mono text-sm`}>{job.company} • {job.period}</div>
-                      <p className={isLight ? 'text-slate-600' : 'text-neutral-300'}>{job.desc}</p>
+                      <h3 className={`text-[1.1rem] md:text-2xl font-bold ${textColor}`}>{job.role}</h3>
+                      <div className={`${subTextColor} mb-2 font-mono text-[0.8rem] md:text-sm`}>{job.company} • {job.period}</div>
+                      <p className={`text-[0.9rem] md:text-md ${isLight ? 'text-slate-600' : 'text-neutral-300'}`}>{job.desc}</p>
                   </div>
               ))}
            </div>
@@ -394,20 +394,20 @@ const getItems = (
            <div>
               <h3 className={`text-xl font-bold ${textColor} mb-2`}>Projects</h3>
               <div className="space-y-2">
-                  <div className={`h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 flex items-center gap-3`}>
-                      <div className={`w-10 h-10 ${isLight ? 'bg-sky-200' : 'bg-black'} rounded flex-shrink-0`} />
+                  <div className={`h-9 md:h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 flex items-center gap-3`}>
+                      <div className={`w-4 h-4 md:w-10 md:h-10 ${isLight ? 'bg-sky-200' : 'bg-black'} rounded flex-shrink-0`} />
                       <div className="w-full">
-                          <div className={`h-2 w-16 ${isLight ? 'bg-sky-300' : 'bg-neutral-700'} rounded mb-1`} />
-                          <div className={`h-2 w-8 ${isLight ? 'bg-sky-200' : 'bg-neutral-800'} rounded`} />
+                          <div className={`h-1 md:h-2 w-16 ${isLight ? 'bg-sky-300' : 'bg-neutral-700'} rounded mb-1`} />
+                          <div className={`h-1 md:h-2 w-8 ${isLight ? 'bg-sky-200' : 'bg-neutral-800'} rounded`} />
                       </div>
                   </div>
-                   <div className={`h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 flex items-center gap-3 opacity-50`}>
-                      <div className={`w-10 h-10 ${isLight ? 'bg-sky-200' : 'bg-black'} rounded flex-shrink-0`} />
+                   {/* <div className={`h-6 md:h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 flex items-center gap-3 opacity-50`}>
+                      <div className={`w-3 h-3 md:w-10 md:h-10 ${isLight ? 'bg-sky-200' : 'bg-black'} rounded flex-shrink-0`} />
                       <div className="w-full">
-                          <div className={`h-2 w-12 ${isLight ? 'bg-sky-300' : 'bg-neutral-700'} rounded mb-1`} />
-                          <div className={`h-2 w-10 ${isLight ? 'bg-sky-200' : 'bg-neutral-800'} rounded`} />
+                          <div className={`h-1 md:h-2 w-12 ${isLight ? 'bg-sky-300' : 'bg-neutral-700'} rounded mb-1`} />
+                          <div className={`h-1 md:h-2 w-10 ${isLight ? 'bg-sky-200' : 'bg-neutral-800'} rounded`} />
                       </div>
-                  </div>
+                  </div> */}
               </div>
            </div>
         </div>
@@ -429,7 +429,7 @@ const getItems = (
                         <a href={p.cta} target='_blank'>
                         <Image 
                           src={p.imageUrl ?? `https://picsum.photos/1200/600?random=${idx}`} 
-                          className="object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-500" 
+                          className="object-cover md:grayscale md:group-hover:grayscale-0 md:transition-[filter] md:duration-500" 
                           alt="Project" 
                           fill
                           sizes="(min-width: 1024px) 900px, 100vw"
@@ -454,7 +454,7 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-          <div className="flex flex-col items-center justify-center h-full text-center">
+        <div className="flex flex-col items-center justify-center h-full text-center mt-[45%] md:mt-0">
               <Linkedin size={64} className="text-[#0077B5] mb-6" />
               <h2 className={`text-3xl font-bold mb-4 ${textColor}`}>Let's Connect!</h2>
               <p className={`${subTextColor} max-w-md mb-8`}>
@@ -479,7 +479,7 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-           <div className="flex flex-col items-center justify-center h-full text-center">
+           <div className="flex flex-col items-center justify-center h-full text-center mt-[45%] md:mt-0">
               <Github size={64} className="text-purple-400 mb-6" />
               <h2 className={`text-3xl font-bold mb-4 ${textColor}`}>Perpetually Building</h2>
               <p className={`${subTextColor} max-w-md mb-8`}>
@@ -507,7 +507,7 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-           <div className="flex flex-col h-full justify-center items-center">
+           <div className="flex flex-col h-full justify-center items-center md:mt-0 mt-[45%]">
               <div className="space-y-8">
               <div className={`text-4xl flex font-bold mb-12 ${textColor}`}>Get in Touch</div>
                   <button
@@ -573,6 +573,9 @@ const getItems = (
 export default function HomePage() {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        return 'dark';
+      }
       const saved = localStorage.getItem('portfolio_theme');
       return (saved === 'light' || saved === 'dark') ? saved : 'light';
     }
@@ -594,6 +597,7 @@ export default function HomePage() {
   const [isPostsLoading, setIsPostsLoading] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   const handleCopyToClipboard = useCallback(async (value: string, message: string) => {
     try {
@@ -643,8 +647,10 @@ export default function HomePage() {
   );
 
   useEffect(() => {
-    localStorage.setItem('portfolio_theme', theme);
-  }, [theme]);
+    if (!isMobile) {
+      localStorage.setItem('portfolio_theme', theme);
+    }
+  }, [theme, isMobile]);
 
   useEffect(() => {
     let isMounted = true;
@@ -794,56 +800,57 @@ export default function HomePage() {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* Background Decorations (Clouds/Stars) */}
-      <BackgroundDecorations theme={theme} />
-
-      {/* THEME TOGGLES */}
-      <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-start z-10 pointer-events-none">
-         {/* Moon Button (Top Left) - Active in Dark Mode */}
-         <div className="pointer-events-auto">
-           <AnimatePresence>
-             {theme === 'dark' && (
-                <motion.button
-                  initial={{ scale: 0, rotate: -90, opacity: 0 }}
-                  animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                  exit={{ scale: 0, rotate: 90, opacity: 0 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => toggleTheme('light')}
-                  className="bg-neutral-800 text-yellow-100 p-3 rounded-full shadow-lg border border-neutral-700"
-                >
-                  <Moon size={24} fill="currentColor" />
-                </motion.button>
-             )}
-           </AnimatePresence>
-         </div>
-
-         {/* Sun Button (Top Right) - Active in Light Mode */}
-         <div className="pointer-events-auto">
-           <AnimatePresence>
-             {theme === 'light' && (
-                <motion.button
-                  initial={{ scale: 0, rotate: 90, opacity: 0 }}
-                  animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                  exit={{ scale: 0, rotate: -90, opacity: 0 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => toggleTheme('dark')}
-                  className="bg-yellow-400 text-orange-600 p-3 rounded-full shadow-lg border border-orange-300"
-                >
-                  <Sun size={24} fill="currentColor" />
-                </motion.button>
-             )}
-           </AnimatePresence>
-         </div>
+      <div className="hidden md:block">
+        <BackgroundDecorations theme={theme} />
       </div>
 
+      {/* THEME TOGGLES */}
+      <div className="hidden md:block absolute top-0 left-0 w-full p-6 z-10 pointer-events-none">
+        <div className="flex justify-between items-start">
+           {/* Moon Button (Top Left) - Active in Dark Mode */}
+           <div className="pointer-events-auto">
+             <AnimatePresence>
+               {theme === 'dark' && (
+                  <motion.button
+                    initial={{ scale: 0, rotate: -90, opacity: 0 }}
+                    animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                    exit={{ scale: 0, rotate: 90, opacity: 0 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => toggleTheme('light')}
+                    className="bg-neutral-800 text-yellow-100 p-3 rounded-full shadow-lg border border-neutral-700"
+                  >
+                    <Moon size={24} fill="currentColor" />
+                  </motion.button>
+               )}
+             </AnimatePresence>
+           </div>
 
-      <div className="w-full max-w-7xl z-10 relative">
-        {/* RELATIVE WRAPPER FOR GRID AND EXPANDED VIEW */}
+           {/* Sun Button (Top Right) - Active in Light Mode */}
+           <div className="pointer-events-auto">
+             <AnimatePresence>
+               {theme === 'light' && (
+                  <motion.button
+                    initial={{ scale: 0, rotate: 90, opacity: 0 }}
+                    animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                    exit={{ scale: 0, rotate: -90, opacity: 0 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => toggleTheme('dark')}
+                    className="bg-yellow-400 text-orange-600 p-3 rounded-full shadow-lg border border-orange-300"
+                  >
+                    <Sun size={24} fill="currentColor" />
+                  </motion.button>
+               )}
+             </AnimatePresence>
+           </div>
+        </div>
+      </div>
+
+      <div className="w-full max-w-7xl z-10 relative hidden md:block">
         <div className="relative group/grid">
-          {/* BENTO GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
             {items.map((item, index) => (
               <BentoItem
@@ -855,6 +862,7 @@ export default function HomePage() {
                 onOpen={handleCardClick}
                 onClose={handleClose}
                 theme={theme}
+                layoutIdPrefix="desktop-card"
                 onInitialAnimationComplete={
                   index === items.length - 1 ? handleGridReady : undefined
                 }
@@ -862,18 +870,63 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* EXPANDED OVERLAY */}
           <AnimatePresence onExitComplete={() => setIsExiting(false)}>
             {selectedId && (
               <ExpandedView
                 item={items.find((i) => i.id === selectedId)!}
                 onClose={handleClose}
                 theme={theme}
+                isMobile={false}
+                layoutIdPrefix="desktop-card"
               />
             )}
           </AnimatePresence>
         </div>
+      </div>
 
+      <div className="w-full max-w-7xl z-10 relative block md:hidden">
+        <div className="relative group/grid">
+          <div className="grid grid-cols-2 gap-4">
+            {items.map((item, index) => {
+              const isWideCard = index % 3 === 0;
+              const mobileItem = {
+                ...item,
+                colSpan: isWideCard ? 'col-span-2' : 'col-span-1',
+                rowSpan: 'row-span-1',
+                className: `${item.className ?? ''} ${isWideCard ? 'aspect-[3/2]' : 'aspect-square'}`.trim()
+              };
+
+              return (
+                <BentoItem
+                  key={item.id}
+                  item={mobileItem}
+                  index={index}
+                  isOpen={selectedId === item.id}
+                  isGrayedOut={!!selectedId && selectedId !== item.id}
+                  onOpen={handleCardClick}
+                  onClose={handleClose}
+                  theme={theme}
+                  layoutIdPrefix="mobile-card"
+                  onInitialAnimationComplete={
+                    index === items.length - 1 ? handleGridReady : undefined
+                  }
+                />
+              );
+            })}
+          </div>
+
+          <AnimatePresence onExitComplete={() => setIsExiting(false)}>
+            {selectedId && (
+              <ExpandedView
+                item={items.find((i) => i.id === selectedId)!}
+                onClose={handleClose}
+                theme={theme}
+                isMobile={true}
+                layoutIdPrefix="mobile-card"
+              />
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

@@ -9,9 +9,17 @@ interface ExpandedViewProps {
   item: GridItem;
   onClose: () => void;
   theme: Theme;
+  layoutIdPrefix?: string;
+  isMobile: boolean;
 }
 
-const ExpandedView: React.FC<ExpandedViewProps> = ({ item, onClose, theme }) => {
+const ExpandedView: React.FC<ExpandedViewProps> = ({
+  item,
+  onClose,
+  theme,
+  layoutIdPrefix = 'card',
+  isMobile
+}) => {
   const [isFullScreen, setFullScreen] = useState(false);
   const isLeftOrigin = item.originSide === 'left';
   const isLight = theme === 'light';
@@ -30,7 +38,7 @@ const ExpandedView: React.FC<ExpandedViewProps> = ({ item, onClose, theme }) => 
     : "bg-white/10 text-white";
 
   // Determine styles based on full screen state
-  const containerClasses = isFullScreen
+  const screenState = isFullScreen
     ? `fixed inset-2 md:inset-8 z-[60] flex overflow-hidden rounded-3xl shadow-2xl ${containerBg}`
     : `absolute inset-0 z-50 flex overflow-hidden rounded-3xl shadow-2xl ${containerBg}`;
 
@@ -41,25 +49,45 @@ const ExpandedView: React.FC<ExpandedViewProps> = ({ item, onClose, theme }) => 
     return item.expandedContent;
   };
 
+  const containerClasses = isMobile
+    ? `fixed bottom-0 left-0 right-0 z-[60] h-[90vh] rounded-t-3xl shadow-2xl overflow-hidden border-t border-white/10 ${containerBg}`
+    : `flex overflow-hidden shadow-2xl z-[60] ${containerBg} 
+       absolute inset-0 md:rounded-3xl
+       ${isFullScreen ? 'md:fixed md:inset-8' : ''}`;
+
   return (
     <>
-      {/* Backdrop for Full Screen Mode */}
-      {isFullScreen && (
+      {/* Mobile Backdrop */}
+      {isMobile && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55]"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[59]"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Desktop Backdrop for Full Screen Mode */}
+      {!isMobile && isFullScreen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="hidden md:block fixed inset-0 bg-black/60 backdrop-blur-sm z-[55]"
           onClick={() => setFullScreen(false)}
         />
       )}
 
       <motion.div
-        layoutId={`card-${item.id}`}
-        layout
+        layoutId={isMobile ? undefined : `${layoutIdPrefix}-${item.id}`}
+        layout={!isMobile}
+        initial={isMobile ? { y: "100%" } : { opacity: 0 }}
+        animate={isMobile ? { y: 0 } : { opacity: 1 }}
+        exit={isMobile ? { y: "100%" } : { opacity: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={containerClasses}
-        style={{ flexDirection: isLeftOrigin ? 'row' : 'row-reverse' }}
+        style={{ flexDirection: isLeftOrigin || isMobile ? 'row' : 'row-reverse' }}
       >
         {/* Content Area */}
         <motion.div 
@@ -87,7 +115,7 @@ const ExpandedView: React.FC<ExpandedViewProps> = ({ item, onClose, theme }) => 
         </motion.div>
 
         {/* Back Button Strip (Desktop) */}
-        {!isFullScreen && (
+        {!isMobile && !isFullScreen && (
           <div 
             onClick={(e) => {
               e.stopPropagation();
