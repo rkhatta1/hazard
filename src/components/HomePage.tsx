@@ -393,7 +393,7 @@ const getItems = (
            </div>
            <div>
               <h3 className={`text-xl font-bold ${textColor} mb-2`}>Projects</h3>
-              <div className="space-y-2">
+              <div className="space-y-2 -mb-2 md:mb-0">
                   <div className={`h-9 md:h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 flex items-center gap-3`}>
                       <div className={`w-4 h-4 md:w-10 md:h-10 ${isLight ? 'bg-sky-200' : 'bg-black'} rounded flex-shrink-0`} />
                       <div className="w-full">
@@ -401,13 +401,13 @@ const getItems = (
                           <div className={`h-1 md:h-2 w-8 ${isLight ? 'bg-sky-200' : 'bg-neutral-800'} rounded`} />
                       </div>
                   </div>
-                   {/* <div className={`h-6 md:h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 flex items-center gap-3 opacity-50`}>
+                   <div className={`h-6 md:h-16 w-full ${isLight ? 'bg-sky-100/50 border-sky-200' : 'bg-neutral-800/50 border-neutral-800'} rounded-lg border p-2 hidden md:flex items-center gap-3 opacity-50`}>
                       <div className={`w-3 h-3 md:w-10 md:h-10 ${isLight ? 'bg-sky-200' : 'bg-black'} rounded flex-shrink-0`} />
                       <div className="w-full">
                           <div className={`h-1 md:h-2 w-12 ${isLight ? 'bg-sky-300' : 'bg-neutral-700'} rounded mb-1`} />
                           <div className={`h-1 md:h-2 w-10 ${isLight ? 'bg-sky-200' : 'bg-neutral-800'} rounded`} />
                       </div>
-                  </div> */}
+                  </div>
               </div>
            </div>
         </div>
