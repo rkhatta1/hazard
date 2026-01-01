@@ -2,7 +2,7 @@ id: 'gitfi',
 title: 'The best way to write flawless git commit messages',
 date: 'Dec 31, 2025',
 readTime: '6 min read',
-excerpt: 'Using LLM's to automate the mundane git commands.',
+excerpt: 'Using LLMs to automate the mundane git commands.',
 image: '/blogs/gitfi.webp'
 
 ---
