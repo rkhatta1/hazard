@@ -416,6 +416,8 @@ const getItems = (
         <div className="w-full">
           <div className="grid grid-cols-2 gap-8">
               {[
+                { title: 'ClashRoast', subtext: `Automated gameplay commentary and editing.`, imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/cr-app', cta: 'https://clashroast.vercel.app/' },
+                { title: 'Edit0', subtext: `Agentic multi-cam video editing copilot.`, imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/Edit0', cta: 'https://rkhatta1.github.io/edit0-landing/' },
                 { title: 'Cravemate', subtext: `A group chat that solves the "where are we eating tonight boys?" debate with Yelp's AI API.`, imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/Cravemate', cta: 'https://cravemate-swart.vercel.app/' },
                 { title: 'JobScoutPro', subtext: 'An event-driven agentic job scraper that periodically scrapes, filters, and logs (google sheets) the latest jobs.', imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/JobScoutPro', cta: 'https://github.com/rkhatta1/JobScoutPro' },
                 { title: 'GitFi', subtext: 'An AI git helper to generate/automate (better) commit messages.', imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/gitfi', cta: 'https://www.npmjs.com/package/gitfi' },
