@@ -1,10 +1,10 @@
----
-id: 'my-personal-portfolio-admin'
-title: 'My Personal Portfolio Admin: Or, What We Call OpenClaw This Week'
-date: 'Feb 01, 2026'
-readTime: '3 min read'
-excerpt: "I've automated my blog workflow using OpenClaw, Docker, and Wispr Flow. Here's how I turned my messy voice notes into published posts without touching a keyboard."
+id: 'my-personal-portfolio-admin',
+title: 'My Personal Portfolio Admin: Or, What We Call OpenClaw This Week',
+date: 'Feb 01, 2026',
+readTime: '3 min read',
+excerpt: 'I\'ve automated my blog workflow using OpenClaw, Docker, and Wispr Flow. Here\'s how I turned my messy voice notes into published posts without touching a keyboard.',
 image: '/blogs/IMG_1705.webp'
+
 ---
 
 Let’s address the elephant in the room: OpenClaw has had more names than I’ve had hot dinners recently. But frankly, that’s more of a feature than a bug at this point—keeps us all on our toes.
