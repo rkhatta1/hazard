@@ -2,7 +2,7 @@ id: 'my-personal-portfolio-admin',
 title: 'My Personal Portfolio Admin: Or, What We Call OpenClaw This Week',
 date: 'Feb 01, 2026',
 readTime: '3 min read',
-excerpt: 'I\'ve automated my blog workflow using OpenClaw, Docker, and Wispr Flow. Here\'s how I turned my messy voice notes into published posts without touching a keyboard.',
+excerpt: 'No keyboard required: Blogging with OpenClaw and Wispr Flow.',
 image: '/blogs/IMG_1705.webp'
 
 ---
