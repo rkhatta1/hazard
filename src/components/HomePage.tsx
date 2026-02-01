@@ -537,7 +537,7 @@ const getItems = (
                   </button>
   
                   <div className="pt-8 flex items-center justify-start">
-                      <a href="https://drive.google.com/file/d/1gdjsLIGyG4KSYhS1h1VHnbIcO8sJA1zq/view?usp=sharing" target='_blank' className={`inline-flex items-center gap-3 px-8 py-4 ${isLight ? 'bg-slate-900 text-white hover:bg-slate-700' : 'bg-white text-black hover:bg-neutral-200'} font-bold rounded-full transition-colors text-lg`}>
+                      <a href="https://drive.google.com/file/d/1OvmDsZ982hR7OyG6IVBEQhRY9s8fOHsg/view?usp=sharing" target='_blank' className={`inline-flex items-center gap-3 px-8 py-4 ${isLight ? 'bg-slate-900 text-white hover:bg-slate-700' : 'bg-white text-black hover:bg-neutral-200'} font-bold rounded-full transition-colors text-lg`}>
                          <FileText size={20} />
                          Resume
                       </a>
