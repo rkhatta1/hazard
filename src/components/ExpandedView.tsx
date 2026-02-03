@@ -50,8 +50,8 @@ const ExpandedView: React.FC<ExpandedViewProps> = ({
   };
 
   const containerClasses = isMobile
-    ? `fixed bottom-0 left-0 right-0 z-[60] h-[90vh] rounded-t-3xl shadow-2xl overflow-hidden border-t border-white/10 ${containerBg}`
-    : `flex overflow-hidden shadow-2xl z-[60] ${containerBg} 
+    ? `fixed bottom-0 left-0 right-0 z-[60] h-[90vh] rounded-t-3xl shadow-2xl overflow-hidden border-t border-white/10 flex flex-col ${containerBg}`
+    : `flex overflow-hidden shadow-2xl z-[60] ${containerBg}
        absolute inset-0 md:rounded-3xl
        ${isFullScreen ? 'md:fixed md:inset-8' : ''}`;
 
@@ -83,7 +83,7 @@ const ExpandedView: React.FC<ExpandedViewProps> = ({
         layoutId={isMobile ? undefined : `${layoutIdPrefix}-${item.id}`}
         layout={!isMobile}
         initial={isMobile ? { y: "100%" } : { opacity: 0 }}
-        animate={isMobile ? { y: 0 } : { opacity: 1 }}
+        animate={isMobile ? { y:30 } : { opacity: 1 }}
         exit={isMobile ? { y: "100%" } : { opacity: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={containerClasses}

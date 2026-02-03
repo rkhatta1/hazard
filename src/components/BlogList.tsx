@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github-dark.css';
 import { ArrowLeft, Calendar, Clock, X, Loader2 } from 'lucide-react';
 import { ExpandedContentProps } from '@/types';
 import { BlogPost } from '@/util/blogPosts';
@@ -52,7 +54,7 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
   return (
     <>
       <div className="w-full">
-        <div className="grid gap-6 pt-12 md:pt-0">
+        <div className="grid gap-6 pt-12 md:pt-0 pb-6">
           {posts.map((post) => (
             <div 
               key={post.id} 
@@ -91,7 +93,7 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
                {/* Slide-up Card */}
                <motion.div
                  initial={{ y: "115%" }}
-                 animate={{ y: 0 }}
+                 animate={{ y: 30 }}
                  exit={{ y: "115%" }}
                  transition={{ type: "spring", damping: 19, stiffness: 135 }}
                  className={`w-full h-[90vh] md:h-full rounded-t-3xl md:rounded-3xl shadow-2xl pointer-events-auto overflow-hidden flex flex-col relative ${isLight ? 'bg-white' : 'bg-neutral-900'}`}
@@ -130,22 +132,21 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
                             </div>
                         </div>
 
-                        {/* Title Section (Serif) */}
+                        {/* Title Section */}
                         <div className={`mb-10 md:mb-12 border-b pb-6 md:pb-8 ${isLight ? 'border-slate-200' : 'border-neutral-800'}`}>
-                             <h1 className={`text-3xl md:text-6xl font-serif font-bold leading-tight mb-4 ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                             <h1 className={`text-3xl md:text-4xl font-bold leading-tight mb-4 ${isLight ? 'text-slate-900' : 'text-white'}`}>
                                 {activePost.title}
                              </h1>
                         </div>
-                        
+
                         <div className={`prose prose-base md:prose-lg max-w-none rounded-xl pb-12 min-h-[200px] ${isLight ? 'prose-slate' : 'prose-invert'}
-                           prose-headings:font-serif
                            prose-a:text-blue-400
                            prose-code:text-pink-400
                            prose-pre:bg-neutral-800
                            prose-pre:border
                            prose-pre:border-neutral-700
                         `}>
-                            <ReactMarkdown>{activePost.content}</ReactMarkdown>
+                            <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{activePost.content}</ReactMarkdown>
                         </div>
                       </article>
                     </div>

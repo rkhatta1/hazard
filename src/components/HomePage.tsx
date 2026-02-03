@@ -413,8 +413,8 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-        <div className="w-full">
-          <div className="grid grid-cols-2 gap-8">
+        <div className="w-full pt-12 pb-12 md:pt-0 md:pb-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 { title: 'SplitThat', subtext: 'A Splitwise helper to automate bill itemization using Gen AI.', imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/SplitThat', cta: 'https://splitthat.vercel.app/' },
                 { title: 'ClashRoast', subtext: `Automated gameplay commentary and editing.`, imageUrl: 'https://opengraph.githubassets.com/1/rkhatta1/cr-app', cta: 'https://clashroast.vercel.app/' },
@@ -456,7 +456,7 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-        <div className="flex flex-col items-center justify-center h-full text-center mt-[45%] md:mt-0">
+        <div className="flex flex-col items-center justify-start h-auto md:justify-center md:h-full text-center mt-[45%] md:mt-0">
               <Linkedin size={64} className="text-[#0077B5] mb-6" />
               <h2 className={`text-3xl font-bold mb-4 ${textColor}`}>Let's Connect!</h2>
               <p className={`${subTextColor} max-w-md mb-8`}>
@@ -481,7 +481,7 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-           <div className="flex flex-col items-center justify-center h-full text-center mt-[45%] md:mt-0">
+           <div className="flex flex-col items-center justify-start h-auto md:justify-center md:h-full text-center mt-[45%] md:mt-0">
               <Github size={64} className="text-purple-400 mb-6" />
               <h2 className={`text-3xl font-bold mb-4 ${textColor}`}>Perpetually Building</h2>
               <p className={`${subTextColor} max-w-md mb-8`}>
@@ -509,7 +509,7 @@ const getItems = (
         </div>
       ),
       expandedContent: (
-           <div className="flex flex-col h-full justify-center items-center md:mt-0 mt-[45%]">
+           <div className="flex flex-col justify-start h-auto md:justify-center md:h-full items-center md:mt-0 mt-[45%]">
               <div className="space-y-8">
               <div className={`text-4xl flex font-bold mb-12 ${textColor}`}>Get in Touch</div>
                   <button

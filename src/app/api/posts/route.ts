@@ -30,6 +30,12 @@ function parsePost(filename: string, text: string): BlogPost {
   return metadata as BlogPost;
 }
 
+function parseDate(dateStr: string): Date {
+  // Parse dates like "Dec 31, 2025" or "Jan 1, 2026"
+  const parsed = new Date(dateStr);
+  return isNaN(parsed.getTime()) ? new Date(0) : parsed;
+}
+
 export async function GET() {
   try {
     const files = await fs.readdir(POSTS_DIR);
@@ -41,6 +47,9 @@ export async function GET() {
         return parsePost(filename, text);
       })
     );
+
+    // Sort by date descending (newest first)
+    posts.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 
     return NextResponse.json(posts);
   } catch (error) {
