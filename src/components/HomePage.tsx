@@ -332,7 +332,7 @@ const getItems = (
                       <Code size={20} /> Stack
                   </h3>
                    <div className="flex flex-wrap gap-2">
-                      {['React', 'TypeScript', 'Next.js', 'Node.js', 'Tailwind', 'Framer Motion', 'Python (3.12)', 'PostgreSQL', 'Docker', 'NeoVim', 'Linux', 'Google Cloud'].map(tech => (
+                      {['React.js', 'TypeScript', 'Next.js', 'Node.js', 'TailwindCSS', 'Framer Motion', 'Python (3.12)', 'Convex', 'PostgreSQL', 'Docker', 'NeoVim', 'Linux', 'Google Cloud'].map(tech => (
                           <span key={tech} className={`px-3 py-1 ${cardBg} rounded-full text-sm ${isLight ? 'text-slate-700 border-sky-200' : 'text-neutral-300 border-neutral-700'} border`}>
                               {tech}
                           </span>
