@@ -1,10 +1,10 @@
----
-id: 'agentic-tech-survival'
-title: 'The Agentic Way to Survive Tech Mayhem'
-date: 'Feb 05, 2026'
-readTime: '5 min read'
-excerpt: 'How I built an AI agent to read code for me, ignore the hype, and extract the engineering patterns that actually matter.'
+id: 'agentic-tech-survival',
+title: 'The Agentic Way to Survive Tech Mayhem',
+date: 'Feb 05, 2026',
+readTime: '5 min read',
+excerpt: 'How I built an AI agent to read code for me, ignore the hype, and extract the engineering patterns that actually matter.',
 image: '/blogs/IMG_3112.webp'
+
 ---
 
 We are living in a golden age of open source, which is another way of saying we are drowning in it.
