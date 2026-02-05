@@ -54,30 +54,32 @@ The agent uses this map to *plan* its navigation. It only "opens" (reads) the sp
 
 ### 2. The Task Isolator (`get-shit-done`)
 
-The second piece of the puzzle is the [`get-shit-done`](https://github.com/glittercowboy/get-shit-done) pattern. This is a rigorous enforcement of "single responsibility" applied to agent sessions.
+The second piece of the puzzle is the [`get-shit-done`](https://github.com/glittercowboy/get-shit-done) pattern. This relies on an **Orchestrator Pattern** to rigorously enforce "single responsibility" in agent sessions.
 
-When an agent switches tasks—say, from "fixing a bug in the header" to "updating the database schema"—it shouldn't carry the baggage of the previous task.
+Instead of one giant "God Mode" agent, we have a central "Manager" (Orchestrator). The Manager holds the high-level roadmap but *never touches the code itself*.
 
-We explicitly **clear the context**.
+When a task needs doing (e.g., "Implement Auth"), the Manager spins up a fresh, ephemeral **Sub-Agent**. This Sub-Agent is born with zero baggage, executes the task, reports back, and then *dies*.
 
 ```typescript
-class AgentSession {
-  async switchTask(newTask: string) {
-    // 1. Summarize crucial learnings from current state
-    const summary = await this.summarizeSession();
-    
-    // 2. NUKE THE CONTEXT
-    this.memory.clear();
-    
-    // 3. Re-hydrate with only the essentials
-    this.memory.add(this.contextMap); // The map remains
-    this.memory.add(summary);         // The specific learnings remain
-    this.memory.add(newTask);         // The new objective
-    
-    console.log("Context hygiene enforced. Ready for new task.");
+class Orchestrator {
+  async executeRoadmap(roadmap: Task[]) {
+    for (const task of roadmap) {
+      // 1. Spawn a FRESH sub-agent (Clean Context)
+      const worker = new SubAgent();
+      
+      // 2. Delegate the specific task
+      const result = await worker.execute(task);
+      
+      // 3. Update global state, but DISCARD the worker's chat history
+      this.updateState(result);
+      
+      console.log(`Task '${task.name}' complete. Worker context discarded.`);
+    }
   }
 }
 ```
+
+This ensures the central context never rots, because the heavy lifting is done in disposable, isolated containers. We explicitly **clear the context** between phases.
 
 ## Combining the Architectures
 
