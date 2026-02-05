@@ -76,11 +76,11 @@ The setup is surprisingly simple because OpenClaw handles the heavy lifting of t
 
 Initially, I tried using OpenClaw's internal cron scheduler. It's great for simple "wake up and check messages" tasks, but for a heavy job involving git clones and filesystem operations, I found it a bit unreliable for strict timing.
 
-I switched to using the native Linux `crontab`. It’s battle-tested and rock-solid.
+I switched to using the native Linux `crontab`. It’s battle-tested and rock-solid. To make it persistent across container rebuilds, I just inject it via the `entrypoint.sh` file:
 
 ```bash
-# Run the repo learner every morning at 10:00 AM
-0 10 * * * openclaw agent --message "execute repo learner skill"
+# Run the repo learner every day at 17:00 UTC
+echo "0 17 * * * /usr/local/bin/openclaw agent --message \"execute repo-learner skill\"" | crontab -
 ```
 
 Now, instead of relying on the agent to wake itself up, the OS kicks the agent into gear, guaranteeing I have my tech briefing ready when I start work.
