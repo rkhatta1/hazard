@@ -1,5 +1,5 @@
-id: 'engineering-context-rot',
-title: 'Engineering Context Rot: The Art of Forgetting',
+id: 'making-agents-forget',
+title: 'The Fine Art of Making Agents Forget',
 date: 'Feb 05, 2026',
 readTime: '8 min read',
 excerpt: 'Why 1M token windows are a trap, and how to build "amnesiac" agents that actually get things done.',
@@ -23,9 +23,9 @@ Why? Because LLMs are attention machines, and when you give them everything, the
 
 **More context = More noise.**
 
-## The Solution: Engineering Context Forgetting
+## The Solution: Engineering Context Hygiene
 
-Instead of shoving the entire repository and every conversation history into the prompt, we need to architect systems that are *intentionally amnesiac*. We need to engineer "Context Rot"—the deliberate decay of irrelevant information.
+Instead of shoving the entire repository and every conversation history into the prompt, we need to architect systems that are *intentionally amnesiac*. We need to fight **Context Rot**—the inevitable decay of model performance as irrelevant information accumulates.
 
 Today, we're diving into two architectural patterns that solve this: **File System Context Mapping** (inspired by the [`planning-with-files`](https://github.com/OthmanAdi/planning-with-files) concept) and **Task Isolation** (the [`get-shit-done`](https://github.com/glittercowboy/get-shit-done) approach).
 
@@ -33,7 +33,7 @@ Today, we're diving into two architectural patterns that solve this: **File Syst
 
 Most agents try to "read" the codebase by dumping file contents into the context. That's inefficient.
 
-The [`planning-with-files`](https://github.com/OthmanAdi/planning-with-files) approach treats the file system like a map. instead of reading the *content* of every file, the agent initially only sees the *structure*.
+The [`planning-with-files`](https://github.com/OthmanAdi/planning-with-files) approach treats the file system like a map. Instead of reading the *content* of every file, the agent initially only sees the *structure*.
 
 ```typescript
 // A simplified Context Map
@@ -74,7 +74,7 @@ class AgentSession {
     this.memory.add(summary);         // The specific learnings remain
     this.memory.add(newTask);         // The new objective
     
-    console.log("Context rot enforced. Ready for new task.");
+    console.log("Context hygiene enforced. Ready for new task.");
   }
 }
 ```
