@@ -9,7 +9,7 @@ image: '/blogs/IMG_3117.webp'
 
 Let's talk about the elephant in the room: **Context Windows.**
 
-For the past year, the AI hype cycle has been obsessed with size. "200k tokens!" "500k!" "Gemini 1.5 Pro with 2 MILLION tokens!" It sounds great on paper. In practice? It's a trap.
+For the past year, the AI hype cycle has been obsessed with size. "200k tokens!" "500k!" "Gemini 3 Pro with 1 million tokens!" It sounds great on paper. In practice? It's a trap.
 
 The reality is that context isn't free. I'm not just talking about cost or latency—I'm talking about **Context Rot**.
 
@@ -27,13 +27,13 @@ Why? Because LLMs are attention machines, and when you give them everything, the
 
 Instead of shoving the entire repository and every conversation history into the prompt, we need to architect systems that are *intentionally amnesiac*. We need to engineer "Context Rot"—the deliberate decay of irrelevant information.
 
-Today, we're diving into two architectural patterns that solve this: **File System Context Mapping** (inspired by the `planning-files` concept) and **Task Isolation** (the `GET-shit-done` approach).
+Today, we're diving into two architectural patterns that solve this: **File System Context Mapping** (inspired by the [`planning-with-files`](https://github.com/OthmanAdi/planning-with-files) concept) and **Task Isolation** (the [`get-shit-done`](https://github.com/glittercowboy/get-shit-done) approach).
 
-### 1. The File System Context Map (`planning-files`)
+### 1. The File System Context Map (`planning-with-files`)
 
 Most agents try to "read" the codebase by dumping file contents into the context. That's inefficient.
 
-The `planning-files` approach treats the file system like a map. instead of reading the *content* of every file, the agent initially only sees the *structure*.
+The [`planning-with-files`](https://github.com/OthmanAdi/planning-with-files) approach treats the file system like a map. instead of reading the *content* of every file, the agent initially only sees the *structure*.
 
 ```typescript
 // A simplified Context Map
@@ -52,9 +52,9 @@ const generateContextMap = async (dir: string) => {
 
 The agent uses this map to *plan* its navigation. It only "opens" (reads) the specific files relevant to the current task. This keeps the context window pristine.
 
-### 2. The Task Isolator (`GET-shit-done`)
+### 2. The Task Isolator (`get-shit-done`)
 
-The second piece of the puzzle is the `GET-shit-done` pattern. This is a rigorous enforcement of "single responsibility" applied to agent sessions.
+The second piece of the puzzle is the [`get-shit-done`](https://github.com/glittercowboy/get-shit-done) pattern. This is a rigorous enforcement of "single responsibility" applied to agent sessions.
 
 When an agent switches tasks—say, from "fixing a bug in the header" to "updating the database schema"—it shouldn't carry the baggage of the previous task.
 
@@ -81,7 +81,7 @@ class AgentSession {
 
 ## Combining the Architectures
 
-When you combine `planning-files` (the map) with `GET-shit-done` (the purge), you get an **Agent X** system: a lightweight, surgical instrument rather than a blunt object.
+When you combine `planning-with-files` (the map) with `get-shit-done` (the purge), you get an **Agent X** system: a lightweight, surgical instrument rather than a blunt object.
 
 The agent enters a repo, sees the map, navigates to the exact location, fixes the issue, and then *forgets* the details of that file before moving to the next.
 
