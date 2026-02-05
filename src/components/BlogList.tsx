@@ -18,6 +18,7 @@ type BlogListProps = ExpandedContentProps & {
 const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
   const [activePost, setActivePost] = useState<BlogPost | null>(null);
   const isLight = theme === 'light';
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   useEffect(() => {
     if (!posts.length || activePost) return;
@@ -93,7 +94,7 @@ const BlogList: React.FC<BlogListProps> = ({ theme, posts, isLoading }) => {
                {/* Slide-up Card */}
                <motion.div
                  initial={{ y: "115%" }}
-                 animate={{ y: 30 }}
+                 animate={{ y: isMobile ? 30 : 0 }}
                  exit={{ y: "115%" }}
                  transition={{ type: "spring", damping: 19, stiffness: 135 }}
                  className={`w-full h-[90vh] md:h-full rounded-t-3xl md:rounded-3xl shadow-2xl pointer-events-auto overflow-hidden flex flex-col relative ${isLight ? 'bg-white' : 'bg-neutral-900'}`}
