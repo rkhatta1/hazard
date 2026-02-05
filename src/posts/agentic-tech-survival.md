@@ -79,8 +79,8 @@ Initially, I tried using OpenClaw's internal cron scheduler. It's great for simp
 I switched to using the native Linux `crontab`. It’s battle-tested and rock-solid.
 
 ```bash
-# Run the repo learner every morning at 8:00 AM
-0 8 * * * openclaw run --skill repo-learner
+# Run the repo learner every morning at 10:00 AM
+0 10 * * * openclaw agent --message "execute repo learner skill"
 ```
 
 Now, instead of relying on the agent to wake itself up, the OS kicks the agent into gear, guaranteeing I have my tech briefing ready when I start work.
