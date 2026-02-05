@@ -56,30 +56,38 @@ The agent uses this map to *plan* its navigation. It only "opens" (reads) the sp
 
 The second piece of the puzzle is the [`get-shit-done`](https://github.com/glittercowboy/get-shit-done) pattern. This relies on an **Orchestrator Pattern** to rigorously enforce "single responsibility" in agent sessions.
 
-Instead of one giant "God Mode" agent, we have a central "Manager" (Orchestrator). The Manager holds the high-level roadmap but *never touches the code itself*.
+Instead of one giant "God Mode" agent, we have a central "Manager" (Orchestrator). The Orchestrator holds the high-level roadmap and state files (`ROADMAP.md`, `STATE.md`) but *never touches the code itself*.
 
-When a task needs doing (e.g., "Implement Auth"), the Manager spins up a fresh, ephemeral **Sub-Agent**. This Sub-Agent is born with zero baggage, executes the task, reports back, and then *dies*.
+The workflow is a pipeline of specialized, ephemeral agents:
+1.  **Researcher:** Spawns to investigate the domain/stack.
+2.  **Planner:** Creates atomic, XML-structured plans for a single phase.
+3.  **Executor:** Spawns in "waves" (parallel if possible) to execute each plan.
+4.  **Verifier:** Checks the work against the requirements.
+
+Each of these sub-agents is born with zero baggage, performs its specific duty, reports back to the Orchestrator, and then *dies*.
 
 ```typescript
 class Orchestrator {
-  async executeRoadmap(roadmap: Task[]) {
-    for (const task of roadmap) {
-      // 1. Spawn a FRESH sub-agent (Clean Context)
-      const worker = new SubAgent();
-      
-      // 2. Delegate the specific task
-      const result = await worker.execute(task);
-      
-      // 3. Update global state, but DISCARD the worker's chat history
-      this.updateState(result);
-      
-      console.log(`Task '${task.name}' complete. Worker context discarded.`);
-    }
+  async executePhase(phase: Phase) {
+    // 1. Research & Plan (Specialized Agents)
+    const research = await this.spawnAgent('researcher', phase);
+    const plans = await this.spawnAgent('planner', phase, research);
+
+    // 2. Execute Plans (Fresh Context per Plan)
+    await Promise.all(plans.map(async (plan) => {
+      const executor = new SubAgent(); 
+      await executor.execute(plan);
+      // Context dies here. No rot accumulates.
+    }));
+
+    // 3. Verify & Update State
+    await this.spawnAgent('verifier', phase);
+    this.updateRoadmap();
   }
 }
 ```
 
-This ensures the central context never rots, because the heavy lifting is done in disposable, isolated containers. We explicitly **clear the context** between phases.
+This ensures the central context never rots, because the heavy lifting is done in disposable, isolated containers. We explicitly **clear the context** between phases and tasks.
 
 ## Combining the Architectures
 
